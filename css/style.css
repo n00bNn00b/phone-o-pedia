@@ -1,0 +1,7 @@
+#spinner {
+  display: none;
+}
+#error {
+  display: none;
+  color: red;
+}

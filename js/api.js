@@ -33,7 +33,7 @@ const displayPhones = (data) => {
   } else {
     const phoneResults = data.slice(0, 20);
     phoneResults.forEach((phone) => {
-      console.log(phone);
+      //   console.log(phone);
       const div = document.createElement("div");
       div.classList.add("col");
       div.innerHTML = `
@@ -63,11 +63,35 @@ const details = (id) => {
 const phoneDetails = (data) => {
   const phoneData = document.getElementById("phone-details");
   phoneData.textContent = "";
-  console.log(data);
 
+  //   console.log(data);
   const div = document.createElement("div");
 
   div.classList.add("col");
+
+  //   others error handling
+  let wlan = "";
+  let blutooth = "";
+  let gps = "";
+  let nfc = "";
+  let radio = "";
+  let usb = "";
+  if (data.others === undefined || data.others === null) {
+    wlan = "not present";
+    blutooth = "not present";
+    gps = "not present";
+    nfc = "not present";
+    radio = "not present";
+    usb = "not present";
+  } else {
+    wlan = data.others.WLAN;
+    blutooth = data.others.Bluetooth;
+    gps = data.others.GPS;
+    nfc = data.others.nfc;
+    radio = data.others.Radio;
+    usb = data.others.USB;
+  }
+
   div.innerHTML = `
       <div class="card">
       <img src="${data.image}" class="card-img-top" alt="...">
@@ -86,12 +110,12 @@ const phoneDetails = (data) => {
          </div>
          <div>
               <h4 class="fw-bold">Others:</h4>
-              <p class="card-text"><span class="fw-bold">WLAN:</span> ${data.others.WLAN}</p>
-              <p class="card-text"><span class="fw-bold">Bluetooth:</span> ${data.others.Bluetooth}</p>
-              <p class="card-text"><span class="fw-bold">GPS:</span> ${data.others.GPS}</p>
-              <p class="card-text"><span class="fw-bold">NFC:</span> ${data.others.NFC}</p>
-              <p class="card-text"><span class="fw-bold">Radio:</span> ${data.others.Radio}</p>
-              <p class="card-text"><span class="fw-bold">USB:</span> ${data.others.USB}</p>
+              <p class="card-text"><span class="fw-bold">WLAN:</span> ${wlan}</p>
+              <p class="card-text"><span class="fw-bold">Bluetooth:</span> ${blutooth}</p>
+              <p class="card-text"><span class="fw-bold">GPS:</span> ${gps}</p>
+              <p class="card-text"><span class="fw-bold">NFC:</span> ${nfc}</p>
+              <p class="card-text"><span class="fw-bold">Radio:</span> ${radio}</p>
+              <p class="card-text"><span class="fw-bold">USB:</span> ${usb}</p>
          </div>
       </div>
   </div>

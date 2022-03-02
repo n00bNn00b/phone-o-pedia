@@ -1,5 +1,8 @@
+a {
+  text-decoration: none;
+}
 .bg-color {
-  background-color: #dfe7fd !important;
+  background-color: #acbded !important;
 }
 #spinner {
   display: none;

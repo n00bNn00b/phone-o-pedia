@@ -14,6 +14,7 @@ const searchPhone = () => {
     error.style.display = "block";
     loadingSpinner("none");
     phoneData.textContent = "";
+    inputText.value = "";
   } else {
     const url = `https://openapi.programming-hero.com/api/phones?search=${inputValue}`;
     fetch(url)
@@ -23,6 +24,7 @@ const searchPhone = () => {
     error.style.display = "none";
     loadingSpinner("none");
     phoneData.textContent = "";
+    inputText.value = "";
   }
 };
 
@@ -40,12 +42,14 @@ const displayPhones = (data) => {
       const div = document.createElement("div");
       div.classList.add("col");
       div.innerHTML = `
-    <div class="card">
+    <div class="card p-3">
     <img src="${phone.image}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">${phone.phone_name}</h5>
       <p class="card-text">Brand: ${phone.brand}</p>
-      <a href="#phone-details"><button onclick="details('${phone.slug}')"class="rounded btn-primary">Click for Details</button></a>
+      <div class="text-center">
+      <a href="#phone-details"><button onclick="details('${phone.slug}')"class="btn rounded btn-primary">Click for Details</button></a>
+      </div>
     </div>
   </div>
     `;

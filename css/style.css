@@ -1,3 +1,6 @@
+.bg-color {
+  background-color: #dfe7fd !important;
+}
 #spinner {
   display: none;
 }
